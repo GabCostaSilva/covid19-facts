@@ -5,7 +5,7 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App title="Pub Data Consumer"/>
+    <App title="Covid-19 Nos Estados Brasileiros"/>
   </React.StrictMode>,
   document.getElementById('root')
 );
