@@ -1,3 +1,9 @@
 .wrapper {
-    margin: 48px 56px;
+    padding: 64px 56px;
+}
+
+.data-rows:nth-child(even) {
+    display: flex;
+    align-items: center;
+    background-color: whitesmoke;
 }
