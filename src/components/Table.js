@@ -2,8 +2,6 @@ import React from 'react'
 import dictionary from "../resources/dictionary"
 
 function Headings({ dataHeadings }) {
-    console.log("Aqui", dataHeadings
-        .filter(filterDataWithDictionary))
     return dataHeadings
         .filter(filterDataWithDictionary)
         .map((heading, key) =>
@@ -14,7 +12,6 @@ function Headings({ dataHeadings }) {
 }
 
 function filterDataWithDictionary(heading) {
-    // console.log("filter",heading,dictionary.hasOwnProperty(heading))
     return dictionary.hasOwnProperty(heading)
 }
 
