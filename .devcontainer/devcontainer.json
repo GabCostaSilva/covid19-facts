@@ -15,7 +15,8 @@
 	"extensions": [
 		"dbaeumer.vscode-eslint",
 		"christian-kohler.npm-intellisense",
-		"xabikos.JavaScriptSnippets"
+		"msjsdiag.vscode-react-native",
+		"xabikos.reactsnippets"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

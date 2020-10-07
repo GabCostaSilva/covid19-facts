@@ -21,8 +21,14 @@ const apiUrlStatus = "https://covid19-brazil-api.now.sh/api/status/v1"
  * - implementar verificação de disponibilidade da api primeiramente
  */
 
-export default async () => {
+export async function allCasesInBrazil() {
     let response = await window.fetch(apiUrlBase)
+    response = await response.json()
+    return response.data
+}
+
+export async function allCasesInTheWorld() {
+    let response = await window.fetch(apiUrlBase + 'countries')
     response = await response.json()
     return response.data
 }

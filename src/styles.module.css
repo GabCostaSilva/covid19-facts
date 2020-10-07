@@ -1,0 +1,83 @@
+.App {
+  font-family: "IBM Plex Sans", sans-serif;
+  background-color: #f5fafa;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  background-color: #ffffff;
+  padding: 40px;
+  border: 1px solid #1f5f61;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.formTitle {
+  font-size: 20px;
+  position: relative;
+}
+
+.formTitle > hr {
+  width: 100%;
+  border: 1px solid #b8cccc;
+}
+
+label,
+input {
+  display: block;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  padding: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+select {
+  height: 18px;
+}
+
+select {
+  height: 26px;
+  background-color: #ffffff;
+}
+
+.formGroup {
+  margin-bottom: 16px;
+}
+
+.inlineGroup {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inlineGroup div {
+  width: 45%;
+}
+
+button {
+  background: #1f5f61;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #ffffff;
+  letter-spacing: 1.2px;
+  text-align: center;
+  line-height: 16px;
+  padding: 6px 12px;
+  float: right;
+}
