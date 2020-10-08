@@ -48,8 +48,8 @@ function App(props) {
             </article>
 
             <article>
-                {apiDataWorld.length ? (
-                    <Table dataToRender={apiDataWorld} />
+                {apiDataBrazil.length ? (
+                    <Table dataToRender={apiDataBrazil} />
                 ) : (
                     <div
                         style={{
