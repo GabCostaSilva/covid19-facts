@@ -12,7 +12,7 @@
 const apiUrlBase = "https://covid19-brazil-api.now.sh/api/report/v1/";
 const apiUrlStatus = "https://covid19-brazil-api.now.sh/api/status/v1";
 
-export async function allCasesInBrazil() {
+export async function getApiData() {
     let response = await window.fetch(apiUrlBase);
     response = await response.json();
     return response.data;
@@ -24,8 +24,14 @@ export async function allCasesInTheWorld() {
     return response.data;
 }
 
-export async function statusApi() {
+export async function getApiServerDatetime() {
     let response = await window.fetch(apiUrlStatus);
     response = await response.json();
     return response.status;
+}
+
+export async function getDataByBrazilianState(state) {
+    console.log(state)
+    let response = await window.fetch(apiUrlBase + "brazil/uf/" + state.toLowerCase())
+    return await response.json();
 }

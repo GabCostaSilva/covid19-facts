@@ -1,37 +1,33 @@
 import React, { useState, useEffect } from "react";
 import {
-    allCasesInBrazil,
-    allCasesInTheWorld,
-    statusApi,
-} from "./resources/api";
-import Table from "./components/Table";
+    getApiData,
+    getApiServerDatetime,
+    getDataByBrazilianState
+} from "./http/api";
+
+import { Table, Loading, SearchForm } from "./components";
 import "./App.css";
 
+// TODO: ao filtar por resultado perde-se estado anterior no select
+
 function App(props) {
-    const [apiDataBrazil, setApiDataBrazil] = useState([]);
-    const [apiDataWorld, setApiDataWorld] = useState([]);
-    const [apiStatus, setApiStatus] = useState([]);
+    const [tableData, setTableData] = useState([]);
+    const [apiDatetime, setApiDatetime] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            setApiStatus(await statusApi());
+        const fetchApiData = async () => {
+            setApiDatetime(await getApiServerDatetime());
+            setTableData(await getApiData());
         };
-        fetchData();
+        fetchApiData();
     }, []);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            setApiDataBrazil(await allCasesInBrazil());
-        };
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            setApiDataWorld(await allCasesInTheWorld());
-        };
-        fetchData();
-    }, []);
+    const handleChange = async (e) => {
+        e.preventDefault();
+        let state = e.target.value;
+        state = [await getDataByBrazilianState(state)]
+        setTableData(state)
+    }
 
     return (
         <div className="wrapper">
@@ -39,7 +35,7 @@ function App(props) {
                 <h1>{props.title}</h1>
             </header>
 
-            <article className="mb-4">
+            <article className="mb-5">
                 <h2>O que é este projeto</h2>
                 <p>
                     Um sistema de divulgação de dados do COVID-19 nos estados do
@@ -48,19 +44,12 @@ function App(props) {
             </article>
 
             <article>
-                {apiDataBrazil.length ? (
-                    <Table dataToRender={apiDataBrazil} />
-                ) : (
-                    <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                    >
-                        carregando...
-                    </div>
-                )}
+                {tableData.length ?
+                    (<>
+                        <SearchForm options={tableData} onChange={handleChange} />
+                        <Table dataToRender={tableData} />
+                    </>)
+                    : <Loading />}
             </article>
         </div>
     );
