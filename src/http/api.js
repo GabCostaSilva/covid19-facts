@@ -36,7 +36,6 @@ export async function getDataByBrazilianState(state) {
 }
 
 export async function getDataByWorldCountries(countrie) {
-    console.log(countrie)
     let response = await window.fetch(apiUrlBase + countrie.toLowerCase())
     response = await response.json();
     return response.data;
