@@ -1,12 +1,11 @@
 import React from "react";
-import { SearchForm } from "./"
 import dictionary from "../resources/dictionary";
 
 export default function Table({ dataToRender }) {
     return (
         <div>
             <div className="grid">
-                {renderTableBrazil(dataToRender)}
+                {renderTable(dataToRender)}
             </div>
         </div>
     );
@@ -20,10 +19,9 @@ function Headings({ dataHeadings }) {
     ));
 }
 
-function renderTableBrazil(dataToRender) {
+function renderTable(dataToRender) {
     return (
         <>
-            
             <div className="row headings pb-2">
                 <Headings
                     dataHeadings={parseHeadingsFromApiDataObject(
@@ -41,7 +39,8 @@ function renderTableBrazil(dataToRender) {
                             <div className="col align-middle">
                                 {dataReceived[objectKey]}
                             </div>
-                        ) : undefined
+                        )
+                        : undefined
                     )}
                 </div>
             ))}

@@ -1,16 +1,22 @@
 import React from "react"
 
-export default ({ options, onChange }) => {
+export default ({ options, onChange, searchTitle }) => {
+    let firstOption = options[0]
+    let optionValue = ""
+    let optionName = ""
+    if (options.length) {
+        optionValue = firstOption.uf ? "uf" : "country"
+        optionName = firstOption.uf ? "state" : "country"
+    }
     return (
-        <div className="mb-4">
-            <label>Busque por um Estado</label>
+        <label>{searchTitle}
             <select className="ml-2" onChange={onChange}>
                 {options.map((data, key) => (
-                    <option key={key} value={data.uf}>
-                        {data.state}
+                    <option key={key} value={data[optionValue]}>
+                        {data[optionName]}
                     </option>
                 ))}
             </select>
-        </div>
+        </label>
     );
 }   
